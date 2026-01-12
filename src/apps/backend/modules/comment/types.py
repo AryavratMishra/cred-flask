@@ -1,0 +1,46 @@
+from dataclasses import dataclass
+from datetime import datetime
+
+from modules.application.common.types import PaginationParams, SortParams
+
+
+@dataclass(frozen=True)
+class Comment:
+    id: str
+    task_id: str
+    account_id: str
+    content: str
+    created_at: datetime
+    updated_at: datetime
+
+
+@dataclass(frozen=True)
+class CreateCommentParams:
+    task_id: str
+    account_id: str
+    content: str
+
+
+@dataclass(frozen=True)
+class UpdateCommentParams:
+    comment_id: str
+    account_id: str
+    content: str
+
+
+@dataclass(frozen=True)
+class DeleteCommentParams:
+    comment_id: str
+    account_id: str
+
+
+@dataclass(frozen=True)
+class GetCommentsParams:
+    task_id: str
+    account_id: str
+
+
+@dataclass(frozen=True)
+class CommentErrorCode:
+    NOT_FOUND: str = "COMMENT_ERR_01"
+    BAD_REQUEST: str = "COMMENT_ERR_02"
